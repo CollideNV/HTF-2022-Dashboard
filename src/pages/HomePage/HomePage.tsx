@@ -1,10 +1,7 @@
 import { FC } from 'react'
-import environment from '../../resources/constants/environment'
 import styles from './HomePage.module.scss'
 
 import sigil_1 from '../../resources/assets/sigil_1.png'
-
-const baseUrl = environment.api.url
 
 const HomePage: FC = () => {
     return (
