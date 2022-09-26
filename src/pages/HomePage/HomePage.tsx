@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import styles from './HomePage.module.scss'
 
+import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import sigil_1 from '../../resources/assets/sigil_1.png'
 
 const HomePage: FC = () => {
@@ -12,7 +13,9 @@ const HomePage: FC = () => {
                         <h2>Deadline - Hack The Future:</h2>
                         <div className={styles.clock}>04:36:45</div>
                     </div>
-                    <div className={styles.body}></div>
+                    <div className={styles.body}>
+                        <DashboardTable />
+                    </div>
                 </div>
                 <div className={styles.background}>
                     <img src={sigil_1} className={styles.sigil} />
