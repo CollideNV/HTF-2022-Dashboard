@@ -1,12 +1,66 @@
+@import '../../styles/_variables';
 .HomePage {
     position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    padding: 2em;
 
     > h1 {
         font-size: 4em;
+    }
+
+    .leather {
+        background-image: url('../../resources/assets/leather.png');
+        opacity: 50%;
+
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .container {
+        display: flex;
+        background-color: #44260b;
+        // mix-blend-mode: darken;
+        height: 100%;
+        padding: 1em;
+        border-radius: 20px;
+
+        > .navigation {
+            width: 20%;
+            // background-image: url('../../resources/assets/sigil_1.png');
+
+            // background-repeat: no-repeat;
+            // background-size: contain;
+            // background-blend-mode: color-dodge;
+            // background-color: #44260b;
+
+            .sigil {
+                position: absolute;
+                width: inherit;
+                mix-blend-mode: color-dodge;
+                top: 2em;
+                margin-top: 1em;
+            }
+
+            * {
+                font-family: 'aladin';
+                color: $light-brown;
+                text-align: center;
+            }
+
+            .clock {
+                mix-blend-mode: color-dodge;
+            }
+        }
+
+        > .body {
+            width: 80%;
+            background-image: url(../../resources/assets/paper.png);
+            background-size: cover;
+        }
     }
 }
