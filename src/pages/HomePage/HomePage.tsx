@@ -10,13 +10,16 @@ const HomePage: FC = () => {
     return (
         <div className={styles.HomePage}>
             <div className={styles.container}>
-                <div className={styles.navigation}>
-                    <h2>Deadline - Hack The Future:</h2>
-                    <p className={styles.clock}>04:36:45</p>
+                <div className={styles.content}>
+                    <div className={styles.navigation}>
+                        <h2>Deadline - Hack The Future:</h2>
+                        <div className={styles.clock}>04:36:45</div>
+                    </div>
+                    <div className={styles.body}></div>
+                </div>
+                <div className={styles.background}>
                     <img src={sigil_1} className={styles.sigil} />
                 </div>
-                <div className={styles.body}></div>
-                <div className={styles.leather} />
             </div>
         </div>
     )
