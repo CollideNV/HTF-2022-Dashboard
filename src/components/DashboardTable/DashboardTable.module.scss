@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.DashboardTable {
+    width: 100%;
+}
+
+.header {
+    position: sticky;
+}
+
+.table_body {
+    overflow: auto;
+}
+
+.empty_badge,
+.badge {
+    height: 3rem;
+    width: 3rem;
+}
+
+.empty_badge {
+    border-radius: 100%;
+    border: 1px $brown dashed;
+}
+
+.badge_container {
+    display: flex;
+    justify-content: space-evenly;
+}
