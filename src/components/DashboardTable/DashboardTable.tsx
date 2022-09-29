@@ -10,7 +10,11 @@ const headerColumns = ['Rank', 'Team', 'Problem 1', 'Problem 2', 'Problem 3', 'T
 
 const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = 'DashboardTable' }) => {
     const renderTableHeaders = () => {
-        return headerColumns.map((c) => <TableCell key={c}>{c}</TableCell>)
+        return headerColumns.map((c) => (
+            <TableCell className={styles.tableHeaderCell} key={c}>
+                {c}
+            </TableCell>
+        ))
     }
 
     const renderBadges = () => {
@@ -26,12 +30,12 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
     const RenderTableRow: FC<{ index: number }> = useCallback(({ index }) => {
         return (
             <TableRow>
-                <TableCell>{index + 1}.</TableCell>
-                <TableCell>Team A</TableCell>
-                <TableCell>{renderBadges()}</TableCell>
-                <TableCell>{renderBadges()}</TableCell>
-                <TableCell>{renderBadges()}</TableCell>
-                <TableCell>10000</TableCell>
+                <TableCell className={styles.tableCell}>{index + 1}.</TableCell>
+                <TableCell className={styles.tableCell}>Team A</TableCell>
+                <TableCell className={styles.tableCell}>{renderBadges()}</TableCell>
+                <TableCell className={styles.tableCell}>{renderBadges()}</TableCell>
+                <TableCell className={styles.tableCell}>{renderBadges()}</TableCell>
+                <TableCell className={styles.tableCell}>10000</TableCell>
             </TableRow>
         )
     }, [])
@@ -47,12 +51,12 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
 
     return (
         <div className={styles.DashboardTable} data-testid={dataTestId}>
-            <TableContainer>
+            <TableContainer className={styles.tableContainer}>
                 <Table>
-                    <TableHead className={styles.header}>
+                    <TableHead>
                         <TableRow>{renderTableHeaders()}</TableRow>
                     </TableHead>
-                    <TableBody className={styles.table_body}>{renderTableRows}</TableBody>
+                    <TableBody>{renderTableRows}</TableBody>
                 </Table>
             </TableContainer>
         </div>
