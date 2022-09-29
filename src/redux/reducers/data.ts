@@ -5,7 +5,10 @@ const initialState: ReducerData = {
     contents: []
 }
 
-const dataState: (state: ReducerData, action: ReduxActionData<any>) => ReducerData = (state = initialState, action: ReduxActionData<any>) => {
+const dataState: (
+    state: ReducerData,
+    action: ReduxActionData<any>
+) => ReducerData = (state = initialState, action: ReduxActionData<any>) => {
     switch (action.type) {
         case DATA_ACTIONS.SET_CONTENTS:
             return {
