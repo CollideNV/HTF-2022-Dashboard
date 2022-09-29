@@ -11,30 +11,19 @@
 }
 
 .tableHeaderCell {
-    border-bottom: 1px solid $brown;
+    border-bottom: 1px solid $brown !important;
 }
 
 .tableCell,
 .badgesCell {
-    border-bottom: 1px solid $light-brown;
+    border-bottom: 1px solid $light-brown !important;
 }
 
-.empty_badge,
-.badge {
-    height: 2rem;
-    width: 2rem;
-}
-
-.empty_badge {
-    border-radius: 100%;
-    border: 1px $brown dashed;
+.badgesCell {
+    padding: unset !important;
 }
 
 .badge_container {
     display: flex;
     justify-content: space-evenly;
-}
-
-.badgesCell {
-    padding: unset !important;
 }
