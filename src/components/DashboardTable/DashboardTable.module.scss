@@ -10,6 +10,13 @@
 
 .table_body {
     overflow: auto;
+
+.tableHeaderCell {
+    border-bottom: 1px solid $brown;
+}
+
+.tableCell {
+    border-bottom: 1px solid $light-brown;
 }
 
 .empty_badge,
