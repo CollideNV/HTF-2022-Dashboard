@@ -51,12 +51,12 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
 
     return (
         <div className={styles.DashboardTable} data-testid={dataTestId}>
-            <TableContainer>
+            <TableContainer className={styles.tableContainer}>
                 <Table>
-                    <TableHead className={styles.header}>
+                    <TableHead>
                         <TableRow>{renderTableHeaders()}</TableRow>
                     </TableHead>
-                    <TableBody className={styles.table_body}>{renderTableRows}</TableBody>
+                    <TableBody>{renderTableRows}</TableBody>
                 </Table>
             </TableContainer>
         </div>
