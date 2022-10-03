@@ -35,8 +35,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint --cache .",
-        "format": "prettier --check .",
+        "lint": "eslint --cache ./src",
+        "format": "prettier --check ./src",
         "generate:component": "npx generate-react-cli component",
         "generate:page": "npx generate-react-cli component --type=page"
     },

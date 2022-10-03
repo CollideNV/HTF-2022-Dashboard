@@ -1,4 +1,11 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow
+} from '@mui/material'
 import { FC, useCallback, useMemo } from 'react'
 import { BadgeType } from '../../types/BadgeType'
 import { Problem } from '../../types/Problem'
@@ -11,111 +18,20 @@ interface DashboardTableProps {
     teams?: Team[]
 }
 
-const dummyTeams: Team[] = [
-    {
-        name: 'Team A',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 3, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 0 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 1 }
-        ],
-        score: 4800
-    },
-    {
-        name: 'Team B',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 3, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 3, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 0 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 3, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 0 }
-        ],
-        score: 0
-    },
-    {
-        name: 'Team C',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 3, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 3, toDoSpells: 0 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 1 }
-        ],
-        score: 4950
-    },
-    {
-        name: 'Team D',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 1 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 3 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 3 }
-        ],
-        score: 0
-    },
-    {
-        name: 'Team E',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 1 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 3, toDoSpells: 0 }
-        ],
-        score: 3300
-    },
-    {
-        name: 'Team F',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 2 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 1 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 }
-        ],
-        score: 1440
-    },
-    {
-        name: 'Team G',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 0, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 1 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 1 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 0 }
-        ],
-        score: 3240
-    },
-    {
-        name: 'Team H',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 1 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 2 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 0, toDoSpells: 1 }
-        ],
-        score: 0
-    },
-    {
-        name: 'Team I',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 }
-        ],
-        score: 1500
-    },
-    {
-        name: 'Team J',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 2, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 1 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 1 }
-        ],
-        score: 3000
-    },
-    {
-        name: 'Team K',
-        problems: [
-            { badgeUrl: BadgeType.CYAN_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 },
-            { badgeUrl: BadgeType.LIME_BADGE, description: '', failedSpells: 1, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 1 },
-            { badgeUrl: BadgeType.THUNDER_BADGE, description: '', failedSpells: 2, name: '', score: 10, solved: false, solvedSpells: 1, toDoSpells: 0 }
-        ],
-        score: 500
-    }
+
+const headerColumns = [
+    'Rank',
+    'Team',
+    'Problem 1',
+    'Problem 2',
+    'Problem 3',
+    'Total Score'
 ]
 
-const headerColumns = ['Rank', 'Team', 'Problem 1', 'Problem 2', 'Problem 3', 'Total Score']
-
-const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = 'DashboardTable', teams = dummyTeams }) => {
+const DashboardTable: FC<DashboardTableProps> = ({
+    'data-testid': dataTestId = 'DashboardTable',
+    teams = []
+}) => {
     const renderTableHeaders = () => {
         return headerColumns.map((c) => (
             <TableCell className={styles.tableHeaderCell} key={c}>
@@ -149,15 +65,21 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
     const renderedBadges = useCallback((problem: Problem) => {
         const badges = retrieveBadges(problem)
 
-        return <div className={styles.badge_container}>{renderBadges(badges)}</div>
+        return (
+            <div className={styles.badge_container}>{renderBadges(badges)}</div>
+        )
     }, [])
 
     const RenderTableRow: FC<{ index: number; team: Team }> = useCallback(
         ({ index, team }) => {
             return (
                 <TableRow>
-                    <TableCell className={styles.tableCell}>{index + 1}.</TableCell>
-                    <TableCell className={styles.tableCell}>{team.name}</TableCell>
+                    <TableCell className={styles.tableCell}>
+                        {index + 1}.
+                    </TableCell>
+                    <TableCell className={styles.tableCell}>
+                        {team.name}
+                    </TableCell>
                     {team.problems.map((problem, i) => {
                         return (
                             <TableCell key={i} className={styles.badgesCell}>
@@ -165,7 +87,9 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
                             </TableCell>
                         )
                     })}
-                    <TableCell className={styles.tableCell}>{team.score}</TableCell>
+                    <TableCell className={styles.tableCell}>
+                        {team.score}
+                    </TableCell>
                 </TableRow>
             )
         },
@@ -173,18 +97,25 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
     )
 
     const renderTableRows = useMemo(() => {
-        const sortedTeams = teams.sort((a, b) => b.score - a.score)
+        const filteredTeams = teams.filter((t) => t.problems.length > 0)
+        const sortedTeams = filteredTeams.sort((a, b) => b.score - a.score)
         const tableRows = []
 
         for (let index = 0; index < sortedTeams.length; index++) {
-            tableRows.push(<RenderTableRow index={index} team={sortedTeams[index]} key={index} />)
+            tableRows.push(
+                <RenderTableRow
+                    index={index}
+                    team={sortedTeams[index]}
+                    key={index}
+                />
+            )
         }
 
         return <>{tableRows}</>
     }, [RenderTableRow, teams])
 
-    return (
-        <div className={styles.DashboardTable} data-testid={dataTestId}>
+    const renderTable = useMemo(() => {
+        return (
             <TableContainer className={styles.tableContainer}>
                 <Table>
                     <TableHead>
@@ -193,6 +124,14 @@ const DashboardTable: FC<DashboardTableProps> = ({ 'data-testid': dataTestId = '
                     <TableBody>{renderTableRows}</TableBody>
                 </Table>
             </TableContainer>
+        )
+    }, [renderTableRows])
+
+    const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
+
+    return (
+        <div className={styles.DashboardTable} data-testid={dataTestId}>
+            {teams.length > 0 ? renderTable : renderNoEntries()}
         </div>
     )
 }
