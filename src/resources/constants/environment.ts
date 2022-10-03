@@ -5,5 +5,3 @@ export default {
         url: REACT_APP_DASHBOARD_API_URL!
     }
 }
-
-console.log(REACT_APP_DASHBOARD_API_URL)
