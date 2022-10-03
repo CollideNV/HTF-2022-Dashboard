@@ -12,14 +12,17 @@ interface DashboardBadgeProps {
     type?: BadgeType
 }
 
-const DashboardBadge: FC<DashboardBadgeProps> = ({ 'data-testid': dataTestId = 'DashboardBadge', type = BadgeType.EMPTY_BADGE }) => {
+const DashboardBadge: FC<DashboardBadgeProps> = ({
+    'data-testid': dataTestId = 'DashboardBadge',
+    type = BadgeType.EMPTY_BADGE
+}) => {
     const renderBadge = (badgeType: BadgeType) => {
         switch (badgeType) {
             case BadgeType.THUNDER_BADGE:
                 return ThunderBadge
-            case BadgeType.CYAN_BADGE:
+            case BadgeType.FLOOD:
                 return CyanBadge
-            case BadgeType.LIME_BADGE:
+            case BadgeType.DROUGHT:
                 return LimeBadge
             case BadgeType.FAIL_BADGE:
                 return FailBadge
