@@ -44,6 +44,7 @@ export const toSnackCase: any = (object: any) => {
 
 CustomAxios.interceptors.response.use(
     (response) => {
+        // eslint-disable-next-line no-param-reassign
         response.data = toCamelCase(response.data)
         return response
     },
@@ -54,6 +55,7 @@ CustomAxios.interceptors.response.use(
 
 CustomAxios.interceptors.request.use(
     (config) => {
+        // eslint-disable-next-line no-param-reassign
         config.data = toSnackCase(config.data)
         return config
     },
