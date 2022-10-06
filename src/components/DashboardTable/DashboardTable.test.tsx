@@ -21,35 +21,113 @@ const mockTeams: Team[] = [
             {
                 badgeUrl: BadgeType.FLOOD,
                 description: '',
-                failedSpells: 0,
-                name: '',
+                name: 'Flood',
                 score: 10,
-                solved: false,
-                solvedSpells: 3,
-                toDoSpells: 0
+                solved: true,
+                spells: [
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: true
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: true
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.DROUGHT,
                 description: '',
-                failedSpells: 1,
-                name: '',
+                name: 'Drought',
                 score: 10,
                 solved: false,
-                solvedSpells: 2,
-                toDoSpells: 0
+                spells: [
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: true
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: true
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.THUNDER_BADGE,
                 description: '',
-                failedSpells: 1,
-                name: '',
+                name: 'Renewable Energy',
                 score: 10,
                 solved: false,
-                solvedSpells: 1,
-                toDoSpells: 1
+                spells: [
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: true
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: true
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    }
+                ]
             }
         ],
-        score: 4800
+        score: 5000
     },
     {
         name: 'Team B',
@@ -57,32 +135,110 @@ const mockTeams: Team[] = [
             {
                 badgeUrl: BadgeType.FLOOD,
                 description: '',
-                failedSpells: 3,
-                name: '',
+                name: 'Flood',
                 score: 10,
-                solved: false,
-                solvedSpells: 0,
-                toDoSpells: 0
+                solved: true,
+                spells: [
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: null
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.DROUGHT,
                 description: '',
-                failedSpells: 3,
-                name: '',
+                name: 'Drought',
                 score: 10,
                 solved: false,
-                solvedSpells: 0,
-                toDoSpells: 0
+                spells: [
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: null
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.THUNDER_BADGE,
                 description: '',
-                failedSpells: 3,
-                name: '',
+                name: 'Renewable Energy',
                 score: 10,
                 solved: false,
-                solvedSpells: 0,
-                toDoSpells: 0
+                spells: [
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: true
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: false
+                    }
+                ]
             }
         ],
         score: 0
@@ -93,32 +249,110 @@ const mockTeams: Team[] = [
             {
                 badgeUrl: BadgeType.FLOOD,
                 description: '',
-                failedSpells: 0,
-                name: '',
+                name: 'Flood',
                 score: 10,
-                solved: false,
-                solvedSpells: 3,
-                toDoSpells: 0
+                solved: true,
+                spells: [
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: null
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.DROUGHT,
                 description: '',
-                failedSpells: 0,
-                name: '',
+                name: 'Drought',
                 score: 10,
                 solved: false,
-                solvedSpells: 3,
-                toDoSpells: 0
+                spells: [
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: null
+                    },
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    }
+                ]
             },
             {
                 badgeUrl: BadgeType.THUNDER_BADGE,
                 description: '',
-                failedSpells: 0,
-                name: '',
+                name: 'Renewable Energy',
                 score: 10,
                 solved: false,
-                solvedSpells: 2,
-                toDoSpells: 1
+                spells: [
+                    {
+                        difficulty: 3,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '0',
+                        solved: false
+                    },
+                    {
+                        difficulty: 1,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: '10',
+                        solved: null
+                    },
+                    {
+                        difficulty: 2,
+                        effect: '',
+                        ingredients: '',
+                        name: '',
+                        recipe: '',
+                        remainingAttempts: 'unlimited',
+                        solved: true
+                    }
+                ]
             }
         ],
         score: 4950

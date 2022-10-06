@@ -1,12 +1,11 @@
 import { BadgeType } from './BadgeType'
+import { Spell } from './Spell'
 
 export interface Problem {
     badgeUrl: BadgeType
     description: string
-    failedSpells: number
     name: string
     score: number
     solved: boolean
-    solvedSpells: number
-    toDoSpells: number
+    spells: Spell[]
 }
