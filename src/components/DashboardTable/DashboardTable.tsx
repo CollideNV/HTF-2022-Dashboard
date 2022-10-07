@@ -8,7 +8,7 @@ import {
 } from '@mui/material'
 import { FC, useCallback, useMemo } from 'react'
 import { BadgeType } from '../../types/BadgeType'
-import { Problem } from '../../types/Problem'
+import { Spell } from '../../types/Spell'
 import { Team } from '../../types/Team'
 import DashboardBadge from '../DashboardBadge/DashboardBadge'
 import styles from './DashboardTable.module.scss'
@@ -18,57 +18,45 @@ interface DashboardTableProps {
     teams?: Team[]
 }
 
-
-const headerColumns = [
-    'Rank',
-    'Team',
-    'Problem 1',
-    'Problem 2',
-    'Problem 3',
-    'Total Score'
-]
-
 const DashboardTable: FC<DashboardTableProps> = ({
     'data-testid': dataTestId = 'DashboardTable',
     teams = []
 }) => {
-    const renderTableHeaders = () => {
-        return headerColumns.map((c) => (
-            <TableCell className={styles.tableHeaderCell} key={c}>
-                {c}
-            </TableCell>
-        ))
-    }
-
-    const retrieveBadges = (problem: Problem) => {
-        const badges: BadgeType[] = []
-
-        for (let index = 0; index < problem.solvedSpells; index++) {
-            badges.push(problem.badgeUrl)
-        }
-
-        for (let index = 0; index < problem.failedSpells; index++) {
-            badges.push(BadgeType.FAIL_BADGE)
-        }
-
-        for (let index = 0; index < problem.toDoSpells; index++) {
-            badges.push(BadgeType.EMPTY_BADGE)
-        }
-
-        return badges
-    }
-
-    const renderBadges = (badges: BadgeType[]) => {
-        return badges.map((badge, i) => <DashboardBadge key={i} type={badge} />)
-    }
-
-    const renderedBadges = useCallback((problem: Problem) => {
-        const badges = retrieveBadges(problem)
+    const renderTableHeaders = useMemo(() => {
+        const problemHeaders = teams[0].problems.map((p) => p.name)
 
         return (
-            <div className={styles.badge_container}>{renderBadges(badges)}</div>
+            <>
+                <TableCell className={styles.tableHeaderCell}>Rank</TableCell>
+                <TableCell className={styles.tableHeaderCell}>Team</TableCell>
+                {problemHeaders.map((header, i) => (
+                    <TableCell className={styles.tableHeaderProblemCell} key={i}>
+                        {header}
+                    </TableCell>
+                ))}
+                <TableCell className={styles.tableHeaderCell}>Score</TableCell>
+            </>
         )
-    }, [])
+    }, [teams])
+
+    const renderedBadges = useCallback(
+        (spells: Spell[], badgeType: BadgeType) => {
+            const getBadgeType = (spell: Spell): BadgeType => {
+                if (spell.solved == null) return BadgeType.EMPTY_BADGE
+
+                return spell.solved ? badgeType : BadgeType.FAIL_BADGE
+            }
+
+            return (
+                <div className={styles.badge_container}>
+                    {spells.map((spell, i) => (
+                        <DashboardBadge key={i} type={getBadgeType(spell)} />
+                    ))}
+                </div>
+            )
+        },
+        []
+    )
 
     const RenderTableRow: FC<{ index: number; team: Team }> = useCallback(
         ({ index, team }) => {
@@ -83,7 +71,10 @@ const DashboardTable: FC<DashboardTableProps> = ({
                     {team.problems.map((problem, i) => {
                         return (
                             <TableCell key={i} className={styles.badgesCell}>
-                                {renderedBadges(problem)}
+                                {renderedBadges(
+                                    problem.spells,
+                                    problem.badgeUrl
+                                )}
                             </TableCell>
                         )
                     })}
@@ -119,13 +110,13 @@ const DashboardTable: FC<DashboardTableProps> = ({
             <TableContainer className={styles.tableContainer}>
                 <Table>
                     <TableHead>
-                        <TableRow>{renderTableHeaders()}</TableRow>
+                        <TableRow>{renderTableHeaders}</TableRow>
                     </TableHead>
                     <TableBody>{renderTableRows}</TableBody>
                 </Table>
             </TableContainer>
         )
-    }, [renderTableRows])
+    }, [renderTableHeaders, renderTableRows])
 
     const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
 
