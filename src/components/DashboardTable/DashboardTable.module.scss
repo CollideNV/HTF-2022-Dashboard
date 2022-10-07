@@ -10,8 +10,13 @@
     height: inherit;
 }
 
-.tableHeaderCell {
+.tableHeaderCell,
+.tableHeaderProblemCell {
     border-bottom: 1px solid $brown !important;
+}
+
+.tableHeaderProblemCell {
+    text-align: center;
 }
 
 .tableCell,
