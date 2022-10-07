@@ -23,8 +23,6 @@ const DashboardTable: FC<DashboardTableProps> = ({
     teams = []
 }) => {
     const renderTableHeaders = useMemo(() => {
-        console.log({ teams })
-
         const problemHeaders = teams[0].problems.map((p) => p.name)
 
         return (
