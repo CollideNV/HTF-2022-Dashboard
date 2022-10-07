@@ -18,15 +18,6 @@ interface DashboardTableProps {
     teams?: Team[]
 }
 
-const headerColumns = [
-    'Rank',
-    'Team',
-    'Problem 1',
-    'Problem 2',
-    'Problem 3',
-    'Total Score'
-]
-
 const DashboardTable: FC<DashboardTableProps> = ({
     'data-testid': dataTestId = 'DashboardTable',
     teams = []
