@@ -39,7 +39,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
                 <TableCell className={styles.tableHeaderCell}>Score</TableCell>
             </>
         )
-    }, [])
+    }, [teams])
 
     const renderedBadges = useCallback(
         (spells: Spell[], badgeType: BadgeType) => {
@@ -118,7 +118,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
                 </Table>
             </TableContainer>
         )
-    }, [renderTableRows])
+    }, [renderTableHeaders, renderTableRows])
 
     const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
 
