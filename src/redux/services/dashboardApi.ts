@@ -9,7 +9,7 @@ export const dashboardApi = createApi({
     reducerPath: 'dashboardApi',
     baseQuery: axiosBaseQuery({ baseUrl: environment.dashboard_api.url }),
     extractRehydrationInfo(action, { reducerPath }) {
-        if (action.type === REHYDRATE) return action.payload[reducerPath]
+        if (action.type === REHYDRATE) return action.payload?.[reducerPath]
     },
     endpoints: (builder) => ({
         getDashboard: builder.query<Team[], void>({

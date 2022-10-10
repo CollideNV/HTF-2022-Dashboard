@@ -30,7 +30,10 @@ const DashboardTable: FC<DashboardTableProps> = ({
                 <TableCell className={styles.tableHeaderCell}>Rank</TableCell>
                 <TableCell className={styles.tableHeaderCell}>Team</TableCell>
                 {problemHeaders.map((header, i) => (
-                    <TableCell className={styles.tableHeaderProblemCell} key={i}>
+                    <TableCell
+                        className={styles.tableHeaderProblemCell}
+                        key={i}
+                    >
                         {header}
                     </TableCell>
                 ))}
