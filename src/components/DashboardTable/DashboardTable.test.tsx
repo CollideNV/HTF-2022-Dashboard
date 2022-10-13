@@ -91,9 +91,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.SUCCESS_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [
@@ -205,9 +205,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.SUCCESS_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [
@@ -319,9 +319,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.SUCCESS_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [
