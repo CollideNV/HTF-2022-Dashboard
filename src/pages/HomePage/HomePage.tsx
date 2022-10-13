@@ -9,10 +9,10 @@ import CountdownTimer from '../../components/Countdown/CountdownTimer'
 
 const HomePage: FC = () => {
     const { data, isFetching } = useGetDashboardQuery()
-    const SIX_HOURS = 6 * 60 * 60 * 1000;
-    const NOW_IN_MS = new Date().getTime();
+    const SIX_HOURS = 6 * 60 * 60 * 1000
+    const NOW_IN_MS = new Date().getTime()
 
-    const deadline = NOW_IN_MS + SIX_HOURS;
+    const deadline = NOW_IN_MS + SIX_HOURS
 
     const renderedBody = useMemo(() => {
         return (

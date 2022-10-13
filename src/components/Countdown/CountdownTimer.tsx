@@ -1,4 +1,4 @@
-import useCountdown from '../../hooks/useCountdown';
+import useCountdown from '../../hooks/useCountdown'
 
 interface CountdownProps {
     targetDate: string | number | Date
@@ -9,35 +9,40 @@ const ExpiredNotice = () => {
         <div className="expired-notice">
             <span>Time is up</span>
         </div>
-    );
-};
-
-function addLeadingZeros(num: number, totalLength: number) {
-    return String(num).padStart(totalLength, '0');
+    )
 }
 
-const ShowCounter = ({ hours, minutes, seconds }: { hours: number, minutes: number, seconds: number }) => {
+function addLeadingZeros(num: number, totalLength: number) {
+    return String(num).padStart(totalLength, '0')
+}
+
+const ShowCounter = ({
+    hours,
+    minutes,
+    seconds
+}: {
+    hours: number
+    minutes: number
+    seconds: number
+}) => {
     return (
         <div className="show-counter">
-            <p>{addLeadingZeros(hours, 2)}:{addLeadingZeros(minutes, 2)}:{addLeadingZeros(seconds, 2)}</p>
+            <p>
+                {addLeadingZeros(hours, 2)}:{addLeadingZeros(minutes, 2)}:
+                {addLeadingZeros(seconds, 2)}
+            </p>
         </div>
-    );
-};
+    )
+}
 
 const CountdownTimer = ({ targetDate }: CountdownProps) => {
-    const [hours, minutes, seconds] = useCountdown(targetDate);
+    const [hours, minutes, seconds] = useCountdown(targetDate)
 
     if (hours + minutes + seconds <= 0) {
-        return <ExpiredNotice />;
+        return <ExpiredNotice />
     } else {
-        return (
-            <ShowCounter
-                hours={hours}
-                minutes={minutes}
-                seconds={seconds}
-            />
-        );
+        return <ShowCounter hours={hours} minutes={minutes} seconds={seconds} />
     }
-};
+}
 
-export default CountdownTimer;
+export default CountdownTimer
