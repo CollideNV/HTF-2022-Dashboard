@@ -5,9 +5,14 @@ import { CircularProgress } from '@mui/material'
 import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
 import sigil_1 from '../../resources/assets/sigil_1.png'
+import CountdownTimer from '../../components/Countdown/CountdownTimer'
 
 const HomePage: FC = () => {
     const { data, isFetching } = useGetDashboardQuery()
+    const SIX_HOURS = 6 * 60 * 60 * 1000
+    const NOW_IN_MS = new Date().getTime()
+
+    const deadline = NOW_IN_MS + SIX_HOURS
 
     const renderedBody = useMemo(() => {
         return (
@@ -27,7 +32,7 @@ const HomePage: FC = () => {
                 <div className={styles.content}>
                     <div className={styles.navigation}>
                         <h2>Deadline - Hack The Future:</h2>
-                        <div className={styles.clock}>04:36:45</div>
+                        <CountdownTimer targetDate={deadline} />
                     </div>
                     {renderedBody}
                 </div>
