@@ -1,7 +1,7 @@
-const { REACT_APP_API_URL } = process.env
+const { REACT_APP_DASHBOARD_API_URL } = process.env
 
 export default {
-    api: {
-        url: REACT_APP_API_URL
+    dashboard_api: {
+        url: REACT_APP_DASHBOARD_API_URL!
     }
 }

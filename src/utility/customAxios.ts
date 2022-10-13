@@ -11,7 +11,9 @@ const toCamelCase: any = (object: any) => {
             transformedObject = {}
             for (const key in object) {
                 if (object[key] !== undefined) {
-                    const newKey = key.replace(/(_\w)|(-\w)/g, (k) => k[1].toUpperCase())
+                    const newKey = key.replace(/(_\w)|(-\w)/g, (k) =>
+                        k[1].toUpperCase()
+                    )
                     transformedObject[newKey] = toCamelCase(object[key])
                 }
             }
@@ -44,6 +46,7 @@ export const toSnackCase: any = (object: any) => {
 
 CustomAxios.interceptors.response.use(
     (response) => {
+        // eslint-disable-next-line no-param-reassign
         response.data = toCamelCase(response.data)
         return response
     },
@@ -54,6 +57,7 @@ CustomAxios.interceptors.response.use(
 
 CustomAxios.interceptors.request.use(
     (config) => {
+        // eslint-disable-next-line no-param-reassign
         config.data = toSnackCase(config.data)
         return config
     },

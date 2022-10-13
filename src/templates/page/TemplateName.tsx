@@ -5,7 +5,9 @@ interface TemplateNameProps {
     'data-testid'?: string
 }
 
-const TemplateName: FC<TemplateNameProps> = ({ 'data-testid': dataTestId = 'TemplateName' }) => {
+const TemplateName: FC<TemplateNameProps> = ({
+    'data-testid': dataTestId = 'TemplateName'
+}) => {
     return (
         <div className={styles.TemplateName} data-testid={dataTestId}>
             TemplateName Component

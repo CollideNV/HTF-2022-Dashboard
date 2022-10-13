@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.DashboardTable {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tableContainer {
+    height: inherit;
+}
+
+.tableHeaderCell,
+.tableHeaderProblemCell {
+    border-bottom: 1px solid $brown !important;
+}
+
+.tableHeaderProblemCell {
+    text-align: center !important;
+}
+
+.tableCell,
+.badgesCell {
+    border-bottom: 1px solid $light-brown !important;
+}
+
+.badgesCell {
+    padding: unset !important;
+}
+
+.badge_container {
+    display: flex;
+    justify-content: space-evenly;
+}
