@@ -47,7 +47,11 @@ const DashboardTable: FC<DashboardTableProps> = ({
             const getBadgeType = (spell: Spell): BadgeType => {
                 if (spell.solved == null) return BadgeType.EMPTY_BADGE
 
-                return spell.solved ? badgeType : BadgeType.FAIL_BADGE
+                return spell.solved
+                    ? badgeType == BadgeType.NULL
+                        ? BadgeType.SUCCESS_BADGE
+                        : badgeType
+                    : BadgeType.FAIL_BADGE
             }
 
             return (
