@@ -1,7 +1,7 @@
 import CyanBadge from '../../resources/assets/badges/cyan_badge.min.svg'
+import DroughtBadge from '../../resources/assets/badges/drought_badge.min.svg'
 import EmptyBadge from '../../resources/assets/badges/empty_badge.min.svg'
 import FailBadge from '../../resources/assets/badges/fail_badge.min.svg'
-import LimeBadge from '../../resources/assets/badges/lime_badge.min.svg'
 import SuccessBadge from '../../resources/assets/badges/success_badge.min.svg'
 import { BadgeType } from '../../types/BadgeType'
 import styles from './DashboardBadge.module.scss'
@@ -20,7 +20,7 @@ const DashboardBadge = ({
             case BadgeType.FLOOD_BADGE:
                 return CyanBadge
             case BadgeType.DROUGHT_BADGE:
-                return LimeBadge
+                return DroughtBadge
             case BadgeType.FAIL_BADGE:
                 return FailBadge
             case BadgeType.SUCCESS_BADGE:
