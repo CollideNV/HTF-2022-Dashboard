@@ -71,6 +71,11 @@
 
                     z-index: 1;
                 }
+
+                > .button {
+                    display: block;
+                    margin: 0 auto;
+                }
             }
 
             > .body {
