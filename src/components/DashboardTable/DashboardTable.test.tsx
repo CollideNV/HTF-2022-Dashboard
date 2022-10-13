@@ -19,7 +19,7 @@ const mockTeams: Team[] = [
         name: 'Team A',
         problems: [
             {
-                badgeUrl: BadgeType.FLOOD,
+                badgeUrl: BadgeType.FLOOD_BADGE,
                 description: '',
                 name: 'Flood',
                 score: 10,
@@ -55,7 +55,7 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.DROUGHT,
+                badgeUrl: BadgeType.DROUGHT_BADGE,
                 description: '',
                 name: 'Drought',
                 score: 10,
@@ -91,9 +91,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.THUNDER_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [
@@ -133,7 +133,7 @@ const mockTeams: Team[] = [
         name: 'Team B',
         problems: [
             {
-                badgeUrl: BadgeType.FLOOD,
+                badgeUrl: BadgeType.FLOOD_BADGE,
                 description: '',
                 name: 'Flood',
                 score: 10,
@@ -169,7 +169,7 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.DROUGHT,
+                badgeUrl: BadgeType.DROUGHT_BADGE,
                 description: '',
                 name: 'Drought',
                 score: 10,
@@ -205,9 +205,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.THUNDER_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [
@@ -247,7 +247,7 @@ const mockTeams: Team[] = [
         name: 'Team C',
         problems: [
             {
-                badgeUrl: BadgeType.FLOOD,
+                badgeUrl: BadgeType.FLOOD_BADGE,
                 description: '',
                 name: 'Flood',
                 score: 10,
@@ -283,7 +283,7 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.DROUGHT,
+                badgeUrl: BadgeType.DROUGHT_BADGE,
                 description: '',
                 name: 'Drought',
                 score: 10,
@@ -319,9 +319,9 @@ const mockTeams: Team[] = [
                 ]
             },
             {
-                badgeUrl: BadgeType.THUNDER_BADGE,
+                badgeUrl: BadgeType.IMPACT_BADGE,
                 description: '',
-                name: 'Renewable Energy',
+                name: 'Meteor Impact',
                 score: 10,
                 solved: false,
                 spells: [

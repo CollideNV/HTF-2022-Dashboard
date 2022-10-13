@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import CyanBadge from '../../resources/assets/badges/cyan_badge.min.svg'
+import DroughtBadge from '../../resources/assets/badges/drought_badge.min.svg'
 import EmptyBadge from '../../resources/assets/badges/empty_badge.min.svg'
 import FailBadge from '../../resources/assets/badges/fail_badge.min.svg'
-import LimeBadge from '../../resources/assets/badges/lime_badge.min.svg'
-import ThunderBadge from '../../resources/assets/badges/thunder_badge.min.svg'
+import FloodBadge from '../../resources/assets/badges/flood_badge.min.svg'
+import ImpactBadge from '../../resources/assets/badges/impact_badge.min.svg'
+import SuccessBadge from '../../resources/assets/badges/success_badge.min.svg'
 import { BadgeType } from '../../types/BadgeType'
 import styles from './DashboardBadge.module.scss'
 
@@ -12,20 +12,22 @@ interface DashboardBadgeProps {
     type?: BadgeType
 }
 
-const DashboardBadge: FC<DashboardBadgeProps> = ({
+const DashboardBadge = ({
     'data-testid': dataTestId = 'DashboardBadge',
     type = BadgeType.EMPTY_BADGE
-}) => {
+}: DashboardBadgeProps) => {
     const renderBadge = (badgeType: BadgeType) => {
         switch (badgeType) {
-            case BadgeType.THUNDER_BADGE:
-                return ThunderBadge
-            case BadgeType.FLOOD:
-                return CyanBadge
-            case BadgeType.DROUGHT:
-                return LimeBadge
+            case BadgeType.IMPACT_BADGE:
+                return ImpactBadge
+            case BadgeType.FLOOD_BADGE:
+                return FloodBadge
+            case BadgeType.DROUGHT_BADGE:
+                return DroughtBadge
             case BadgeType.FAIL_BADGE:
                 return FailBadge
+            case BadgeType.SUCCESS_BADGE:
+                return SuccessBadge
             default:
                 return EmptyBadge
         }
