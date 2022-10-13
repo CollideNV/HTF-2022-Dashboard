@@ -12,10 +12,14 @@ const ExpiredNotice = () => {
     );
 };
 
+function addLeadingZeros(num: number, totalLength: number) {
+    return String(num).padStart(totalLength, '0');
+}
+
 const ShowCounter = ({ hours, minutes, seconds }: { hours: number, minutes: number, seconds: number }) => {
     return (
         <div className="show-counter">
-            <p>{hours}:{minutes}:{seconds}</p>
+            <p>{addLeadingZeros(hours, 2)}:{addLeadingZeros(minutes, 2)}:{addLeadingZeros(seconds, 2)}</p>
         </div>
     );
 };
