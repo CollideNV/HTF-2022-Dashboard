@@ -1,4 +1,5 @@
 import useCountdown from '../../hooks/useCountdown'
+import styles from './CountdownTimer.module.scss';
 
 interface CountdownProps {
     targetDate: string | number | Date
@@ -26,8 +27,8 @@ const ShowCounter = ({
     seconds: number
 }) => {
     return (
-        <div className="show-counter">
-            <p>
+        <div>
+            <p className={styles.CountdownTimer}>
                 {addLeadingZeros(hours, 2)}:{addLeadingZeros(minutes, 2)}:
                 {addLeadingZeros(seconds, 2)}
             </p>

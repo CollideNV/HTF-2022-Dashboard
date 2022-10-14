@@ -1,127 +1,46 @@
-<h1 align="center">New React App</h1>
+# Collide Wizard Academy
 
-<br />
+Collide Wizard Academy roept een nieuwe generatie digitale tovenaars van heden en ver samen om de mensheid te redden van een catastrofale ondergang. 
+Via magische spreuken kunnen er oplossingen gevonden worden om de mensheid te redden op vlak van voedsel-, energie- en watertekorten. Maar let op… De vervuiling is reeds torenhoog en te veel vervuiling zal fatale gevolgen hebben.
 
-This is a blank README file that you can customize at your needs.\
-Describe your project, how it works and how to contribute to it.
+Via fullstack technologieën ontwikkel je een manier om vergeten API spreuken op te kunnen roepen. Maar niet alle spreuken zijn even efficiënt, met jouw mede tovenaars schrijf je ook nieuwe API spreuken om het spreukenboek te verbeteren!
 
-<br />
+## TL;DR
 
-# 🚀 Available Scripts
+Om de mensheid te redden van de ondergang ga je de problemen moeten oplossen door vergeten spreuken te vinden. Deze spreuken kan je vinden door oplossingen te coderen en deze op te sturen (al dan niet per postduif).
 
-In the project directory, you can run:
+## Hoe ga je te werk?
 
-<br />
-
-## ⚡️ start
-
+Maak je team aan via onze API door je naam op te sturen. Zodra dit gebeurd is, krijg je jouw unieke nummer terug.
 ```
-yarn start
+path: /team
+method: POST
+body: {"name": "<jouw team naam>"}
 ```
+> **Let op!** vergeet deze zeker niet te noteren 🪶 op een stukje perkament 📜 en deel deze met niemand 🤫.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Wereldproblemen
 
-<br />
-
-## 🧪 test
-
+Bij het aanmelden van je team, is er een hele set aan wereldproblemen op je afgevuurd. Om de lijst van deze problemen te verkrijgen en de hints naar hun mogelijke spreuken, moet je deze endpoint oproepen:
 ```
-yarn test
+path: /problems/{teamId}
+method: GET
 ```
 
-Launches the test runner in the interactive watch mode.
+### Spreuken vinden
 
-<br />
+Bij elk probleem krijg je een lijst van spreuken die het probleem mogelijks kunnen verhelpen. Maar let op, niet elke spreuk is even efficiënt. Hoe efficienter de spreuk, hoe moeilijker de opgave, en hoe hoger de punten gaan zijn.
 
-## 🦾 build
+Bij elke spreuk krijg je de id, de uitleg wat deze doet, het recept (de opgave) en de ingrediënten (input voor de opgave).
 
+Om een spreuk af te vuren gebruik je volgende endpoint met je resultaat van de opgave:
 ```
-yarn build
-```
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-
-<br />
-
-## 🧶 lint
-
-```
-yarn lint
+path: /cast/{spellId}
+method: POST
+body: {"formula": "<jouw oplossing>"}
 ```
 
-Creates a `.eslintcache` file in which ESLint cache is stored. Running this command can dramatically improve ESLint's running time by ensuring that only changed files are linted.
+> **Let op!** Voor sommige spreuken kan je maar een aantal keer de formule van doorgeven voordat dit brouwsel 🧪 ontploft 💥.
+>
+> ![](http://images5.fanpop.com/image/answers/2193000/2193846_1322245725814.36res_450_360.jpg)
 
-<br />
-
-## 🎯 format
-
-```
-yarn format
-```
-
-Checks if your files are formatted. This command will output a human-friendly message and a list of unformatted files, if any.
-
-<br />
-
-## ⚙️ generate
-
-```
-yarn generate:component <ComponentName>
-```
-
-or
-
-```
-yarn generate:page <PageName>
-```
-
-Generates a new component in `src/components` or a new Page in `src/pages` using the `generate-react-cli` library.
-
-For more information about generate-react-cli, check out their [readme](https://www.npmjs.com/package/generate-react-cli).
-
-<br />
-
-# 🧬 Project structure
-
-This is the structure of the files in the project:
-
-```sh
-    │
-    ├── public                  # public files (favicon, .htaccess, manifest, ...)
-    ├── src                     # source files
-    │   ├── components
-    │   ├── pages
-    │   ├── resources           # images, constants and other static resources
-    │   ├── store               # Redux store
-    │   │   ├── actions         # store's actions
-    │   │   └── reducers        # store's reducers
-    │   ├── styles
-    │   ├── types               # data interfaces
-    │   ├── utility             # utilities functions and custom components
-    │   ├── App.tsx
-    │   ├── index.tsx
-    │   ├── react-app-env.d.ts
-    │   ├── RootComponent.tsx   # React component with all the routes
-    │   ├── serviceWorker.ts
-    │   └── setupTests.ts
-    ├── .eslintrc.js
-    ├── .gitignore
-    ├── .prettierrc
-    ├── package.json
-    ├── README.md
-    └── tsconfig.json
-```
-
-# 📖 Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#
-
-<p align="center">Bootstrapped with Create React App.</p>

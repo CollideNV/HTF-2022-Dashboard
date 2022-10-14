@@ -65,11 +65,9 @@
                     font-size: 1.5vw;
                 }
 
-                > .clock {
-                    font-size: 4vw;
-                    mix-blend-mode: color-dodge;
-
-                    z-index: 1;
+                > .button {
+                    display: block;
+                    margin: 0 auto;
                 }
             }
 
