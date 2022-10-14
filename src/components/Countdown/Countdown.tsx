@@ -1,5 +1,5 @@
 import useCountdown from '../../hooks/useCountdown'
-import styles from './CountdownTimer.module.scss';
+import styles from './CountdownTimer.module.scss'
 
 interface CountdownProps {
     targetDate: string | number | Date

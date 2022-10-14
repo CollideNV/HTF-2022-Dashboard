@@ -6,7 +6,7 @@ import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
 import sigil_1 from '../../resources/assets/sigil_1.png'
 import BriefingText from '../../components/BriefingText/BriefingText'
-import CountdownTimer from '../../components/Countdown/CountdownTimer'
+import Countdown from '../../components/Countdown/Countdown'
 
 const HomePage: FC = () => {
     const { data, isFetching } = useGetDashboardQuery()
@@ -41,7 +41,7 @@ const HomePage: FC = () => {
                 <div className={styles.content}>
                     <div className={styles.navigation}>
                         <h2>Deadline - Hack The Future:</h2>
-                        <CountdownTimer targetDate={deadline} />
+                        <Countdown targetDate={deadline} />
                         <Button className={styles.button} onClick={toggleBriefing}>
                             {isBriefing ? "Toon dashboard" : "Toon briefing"}
                         </Button>
