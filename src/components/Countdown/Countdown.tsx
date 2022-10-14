@@ -1,7 +1,9 @@
+import { FC, useMemo } from 'react'
 import useCountdown from '../../hooks/useCountdown'
-import styles from './CountdownTimer.module.scss'
+import styles from './Countdown.module.scss'
 
 interface CountdownProps {
+    'data-testid'?: string
     targetDate: string | number | Date
 }
 
@@ -17,33 +19,32 @@ function addLeadingZeros(num: number, totalLength: number) {
     return String(num).padStart(totalLength, '0')
 }
 
-const ShowCounter = ({
-    hours,
-    minutes,
-    seconds
-}: {
-    hours: number
-    minutes: number
-    seconds: number
+const Countdown: FC<CountdownProps> = ({
+    'data-testid': dataTestId = 'Countdown',
+    targetDate
 }) => {
-    return (
-        <div>
-            <p className={styles.CountdownTimer}>
+    const [hours, minutes, seconds] = useCountdown(targetDate)
+
+    const showExpiredNotice = () => {
+        return <span className={styles.expiredNotice}>Time is up</span>
+    }
+
+    const showCountdown = useMemo(() => {
+        return (
+            <span className={styles.timer}>
                 {addLeadingZeros(hours, 2)}:{addLeadingZeros(minutes, 2)}:
                 {addLeadingZeros(seconds, 2)}
-            </p>
+            </span>
+        )
+    }, [hours, minutes, seconds])
+
+    return (
+        <div className={styles.Countdown} data-testid={dataTestId}>
+            {hours + minutes + seconds <= 0
+                ? showExpiredNotice()
+                : showCountdown}
         </div>
     )
 }
 
-const CountdownTimer = ({ targetDate }: CountdownProps) => {
-    const [hours, minutes, seconds] = useCountdown(targetDate)
-
-    if (hours + minutes + seconds <= 0) {
-        return <ExpiredNotice />
-    } else {
-        return <ShowCounter hours={hours} minutes={minutes} seconds={seconds} />
-    }
-}
-
-export default CountdownTimer
+export default Countdown
