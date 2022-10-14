@@ -2,24 +2,24 @@ import { FC, useMemo, useState } from 'react'
 import styles from './HomePage.module.scss'
 
 import { Button, CircularProgress } from '@mui/material'
+import BriefingText from '../../components/BriefingText/BriefingText'
+import Countdown from '../../components/Countdown/Countdown'
 import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
 import sigil_1 from '../../resources/assets/sigil_1.png'
-import BriefingText from '../../components/BriefingText/BriefingText'
-import Countdown from '../../components/Countdown/Countdown'
+import environment from '../../resources/constants/environment'
+
+const deadline = environment.deadline
 
 const HomePage: FC = () => {
     const { data, isFetching } = useGetDashboardQuery()
-    const [ isBriefing, setBriefing ] = useState<boolean>(window.location.href.endsWith('#briefing'));
-
-    const SIX_HOURS = 6 * 60 * 60 * 1000
-    const NOW_IN_MS = new Date().getTime()
-
-    const deadline = NOW_IN_MS + SIX_HOURS
+    const [isBriefing, setBriefing] = useState<boolean>(
+        window.location.href.endsWith('#briefing')
+    )
 
     const toggleBriefing = () => {
-        setBriefing(!isBriefing);
-    };
+        setBriefing(!isBriefing)
+    }
 
     const renderedBody = useMemo(() => {
         return (
@@ -42,8 +42,11 @@ const HomePage: FC = () => {
                     <div className={styles.navigation}>
                         <h2>Deadline - Hack The Future:</h2>
                         <Countdown targetDate={deadline} />
-                        <Button className={styles.button} onClick={toggleBriefing}>
-                            {isBriefing ? "Toon dashboard" : "Toon briefing"}
+                        <Button
+                            className={styles.button}
+                            onClick={toggleBriefing}
+                        >
+                            {isBriefing ? 'Toon dashboard' : 'Toon briefing'}
                         </Button>
                     </div>
                     {renderedBody}

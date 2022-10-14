@@ -7,14 +7,6 @@ interface CountdownProps {
     targetDate: string | number | Date
 }
 
-const ExpiredNotice = () => {
-    return (
-        <div className="expired-notice">
-            <span>Time is up</span>
-        </div>
-    )
-}
-
 function addLeadingZeros(num: number, totalLength: number) {
     return String(num).padStart(totalLength, '0')
 }
