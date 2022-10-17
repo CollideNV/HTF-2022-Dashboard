@@ -34,7 +34,7 @@ jobs:
       run: yarn build
       env:
         REACT_APP_DASHBOARD_API_URL: ${{ secrets.REACT_APP_DASHBOARD_API_URL }}
-        REACT_APP_DEADLINE: "2022-11-15T16:00:00"
+        REACT_APP_DEADLINE: ${{ secrets.REACT_APP_DEADLINE }}
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Upload artifact
