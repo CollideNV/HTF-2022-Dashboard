@@ -7,7 +7,7 @@ import axiosBaseQuery from '../../utility/axiosBaseQuery'
 
 export const dashboardApi = createApi({
     reducerPath: 'dashboardApi',
-    baseQuery: axiosBaseQuery({ baseUrl: environment.dashboard_api.url }),
+    baseQuery: axiosBaseQuery({ baseUrl: environment.dashboard_api.http }),
     tagTypes: ['Dashboard'],
     extractRehydrationInfo(action, { reducerPath }) {
         if (action.type === REHYDRATE) return action.payload?.[reducerPath]
@@ -25,7 +25,9 @@ export const dashboardApi = createApi({
                 }
             ) {
                 // create a websocket connection
-                const socket = new WebSocket('wss://htf.bewire.org/messages')
+                const socket = new WebSocket(
+                    `${environment.dashboard_api.websocket}${API_ROUTES.MESSAGES_ROUTE}`
+                )
 
                 try {
                     // Wait for the initial query to resolve
