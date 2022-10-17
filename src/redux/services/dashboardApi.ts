@@ -15,42 +15,6 @@ export const dashboardApi = createApi({
     endpoints: (builder) => ({
         getDashboard: builder.query<Team[], void>({
             query: () => ({ url: API_ROUTES.DASHBOARD_ROUTE, method: 'GET' }),
-            async onCacheEntryAdded(
-                _arg,
-                {
-                    cacheDataLoaded,
-                    cacheEntryRemoved,
-                    updateCachedData,
-                    dispatch
-                }
-            ) {
-                // create a websocket connection
-                const socket = new WebSocket(
-                    `${environment.dashboard_api.websocket}${API_ROUTES.MESSAGES_ROUTE}`
-                )
-
-                try {
-                    // Wait for the initial query to resolve
-                    await cacheDataLoaded
-
-                    const listener = () => {
-                        updateCachedData(() => {
-                            dispatch(
-                                dashboardApi.util.invalidateTags(['Dashboard'])
-                            )
-                        })
-                    }
-
-                    socket.addEventListener('message', listener)
-                } catch (err) {
-                    // no-op in case `cacheEntryRemoved` resolves before `cacheDataLoaded`,
-                    // in which case `cacheDataLoaded` will throw
-                }
-
-                // Will resolve when cache subscription is no longer active
-                await cacheEntryRemoved
-                socket.close()
-            },
             providesTags: ['Dashboard']
         })
     })
