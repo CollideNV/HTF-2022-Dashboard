@@ -6,7 +6,7 @@
     font-size: 120%;
 
     code {
-        background: rgba(255,255,255, 0.2);
+        background: rgba(255, 255, 255, 0.2);
         padding: 15px;
         border-radius: 10px;
         white-space: pre-line;
@@ -20,7 +20,7 @@
         border-radius: 10px;
         margin-right: 50px;
         &::before {
-            content: "🪄";
+            content: '🪄';
             position: absolute;
             transform: translateX(-60px);
             font-size: 2rem;

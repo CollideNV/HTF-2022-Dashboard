@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styles from './HomePage.module.scss'
 
 import { Button, CircularProgress } from '@mui/material'
@@ -7,12 +7,17 @@ import Countdown from '../../components/Countdown/Countdown'
 import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
 import sigil_1 from '../../resources/assets/sigil_1.png'
+import { API_ROUTES } from '../../resources/constants/api-constants'
 import environment from '../../resources/constants/environment'
 
 const deadline = environment.deadline
 
 const HomePage: FC = () => {
-    const { data, isFetching } = useGetDashboardQuery()
+    const { data, isLoading, refetch } = useGetDashboardQuery(undefined, {
+        refetchOnMountOrArgChange: true,
+        refetchOnReconnect: true,
+        pollingInterval: 30000
+    })
     const [isBriefing, setBriefing] = useState<boolean>(
         window.location.href.endsWith('#briefing')
     )
@@ -21,19 +26,53 @@ const HomePage: FC = () => {
         setBriefing(!isBriefing)
     }
 
+    const ws = useRef<WebSocket | null>(null)
+
+    useEffect(() => {
+        ws.current = new WebSocket(
+            `${environment.dashboard_api.websocket}${API_ROUTES.MESSAGES_ROUTE}`
+        )
+        const wsCurrent = ws.current
+
+        return () => {
+            wsCurrent?.close()
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!ws.current) return
+
+        //keep websocket alive
+        const interval = setInterval(() => {
+            ws.current?.send('ping')
+        }, 30000)
+
+        const listener = () => {
+            console.log(`UPDATE RECIEVED: ${new Date()}`)
+
+            refetch()
+        }
+
+        ws.current.addEventListener('message', listener)
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [refetch])
+
     const renderedBody = useMemo(() => {
         return (
             <div className={styles.body}>
                 {isBriefing ? (
                     <BriefingText />
-                ) : isFetching ? (
+                ) : isLoading ? (
                     <CircularProgress />
                 ) : (
                     <DashboardTable teams={data} />
                 )}
             </div>
         )
-    }, [data, isFetching, isBriefing])
+    }, [data, isLoading, isBriefing])
 
     return (
         <div className={styles.HomePage}>
