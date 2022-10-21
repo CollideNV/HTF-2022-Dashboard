@@ -4,9 +4,11 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow,
+    Zoom
 } from '@mui/material'
-import { FC, useCallback, useMemo } from 'react'
+import { FC, useCallback, useMemo, useRef } from 'react'
+import { TransitionGroup } from 'react-transition-group'
 import { BadgeType } from '../../types/BadgeType'
 import { Spell } from '../../types/Spell'
 import { Team } from '../../types/Team'
@@ -22,8 +24,11 @@ const DashboardTable: FC<DashboardTableProps> = ({
     'data-testid': dataTestId = 'DashboardTable',
     teams = []
 }) => {
+    const containerRef = useRef(null)
+
     const renderTableHeaders = useMemo(() => {
-        const problemHeaders = teams[0].problems.map((p) => p.name)
+        const problemHeaders: string[] = []
+        teams[0]?.problems.map((p) => problemHeaders.push(p.name))
 
         return (
             <>
@@ -65,8 +70,8 @@ const DashboardTable: FC<DashboardTableProps> = ({
         []
     )
 
-    const RenderTableRow: FC<{ index: number; team: Team }> = useCallback(
-        ({ index, team }) => {
+    const RenderTableRow = useCallback(
+        (index: number, team: Team) => {
             return (
                 <TableRow>
                     <TableCell className={styles.tableCell}>
@@ -101,11 +106,16 @@ const DashboardTable: FC<DashboardTableProps> = ({
 
         for (let index = 0; index < sortedTeams.length; index++) {
             tableRows.push(
-                <RenderTableRow
-                    index={index}
-                    team={sortedTeams[index]}
+                <Zoom
+                    // direction="up"
+                    mountOnEnter
+                    unmountOnExit
                     key={index}
-                />
+                    in
+                    // container={containerRef.current}
+                >
+                    {RenderTableRow(index, sortedTeams[index])}
+                </Zoom>
             )
         }
 
@@ -119,7 +129,9 @@ const DashboardTable: FC<DashboardTableProps> = ({
                     <TableHead>
                         <TableRow>{renderTableHeaders}</TableRow>
                     </TableHead>
-                    <TableBody>{renderTableRows}</TableBody>
+                    <TransitionGroup component={null}>
+                        <TableBody>{renderTableRows}</TableBody>
+                    </TransitionGroup>
                 </Table>
             </TableContainer>
         )
@@ -128,8 +140,12 @@ const DashboardTable: FC<DashboardTableProps> = ({
     const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
 
     return (
-        <div className={styles.DashboardTable} data-testid={dataTestId}>
-            {teams.length > 0 ? renderTable : renderNoEntries()}
+        <div
+            className={styles.DashboardTable}
+            data-testid={dataTestId}
+            ref={containerRef}
+        >
+            {teams.length ? renderTable : renderNoEntries()}
         </div>
     )
 }
