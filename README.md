@@ -37,7 +37,7 @@ query: teamId
 
 ### Wereldproblemen
 
-Met de voorgaande api call is er een hele set aan wereldproblemen op je afgevuurd. Je kan altijd je [quest opnieuw oproepen](https://htf.bewire.org/swagger-ui.html#/problem-controller/getQuestUsingGET) met alle wereldproblemen, mogelijke spreuken en bijbehorende hints, door de volgende endpoint op te roepen:
+Met het starten van je queeste is er een hele set aan wereldproblemen op je afgevuurd. Je kan altijd je [quest opnieuw opvragen](https://htf.bewire.org/swagger-ui.html#/problem-controller/getQuestUsingGET) met alle wereldproblemen, mogelijke spreuken en bijbehorende hints, door de volgende endpoint op te roepen:
 
 ```
 path: /problems/{teamId}
