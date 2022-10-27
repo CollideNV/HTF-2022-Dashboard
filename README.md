@@ -64,7 +64,7 @@ query: formula
 
 ### Badges & Score
 
-Zodra je een spreuk correct hebt uitgevoerd krijg je een badge voor deze spreuk. Je kan jouw behaalde badges bekijken per wereldprobleem op [het magische dashboard](https://htf-dashboard.bewire.org/).
+Zodra je een spreuk correct hebt afgevuurd krijg je een badge voor deze spreuk. Je kan jouw behaalde badges bekijken per wereldprobleem op [het magische dashboard](https://htf-dashboard.bewire.org/).
 
 Heb je twee spreuken van een wereld probleem correct uitgevoerd? Dan heb je deze wereldprobleem al goed verholpen en krijg je een score! Je kan ervoor kiezen om de laatste spreuk op te lossen voor een hogere score of een ander wereldprobleem op te lossen.
 
