@@ -8,6 +8,12 @@
 
 .tableContainer {
     height: inherit;
+    scrollbar-width: none;
+}
+
+.tableContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .tableHeaderCell,
@@ -31,4 +37,32 @@
 .badge_container {
     display: flex;
     justify-content: space-evenly;
+}
+
+.badge {
+    position: relative;
+    height: 48px;
+    width: 48px;
+
+    :first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    :nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .confetti {
+        width: 10rem;
+        height: 10rem;
+        position: absolute;
+        top: -3.5rem;
+        left: -3.5rem;
+        z-index: 2;
+    }
 }

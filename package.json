@@ -5,6 +5,7 @@
     "dependencies": {
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
+        "@lottiefiles/react-lottie-player": "^3.4.7",
         "@mui/icons-material": "^5.10.3",
         "@mui/material": "^5.10.4",
         "@reduxjs/toolkit": "^1.8.5",
@@ -26,6 +27,7 @@
         "react-redux": "^8.0.1",
         "react-router-dom": "^6.1.1",
         "react-scripts": "5.0.1",
+        "react-transition-group": "^4.4.5",
         "redux-persist": "^6.0.0",
         "sass": "^1.52.1",
         "sass-loader": "^13.0.0",

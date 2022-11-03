@@ -1,4 +1,7 @@
+import { Player } from '@lottiefiles/react-lottie-player'
 import {
+    Grow,
+    Slide,
     Table,
     TableBody,
     TableCell,
@@ -6,7 +9,8 @@ import {
     TableHead,
     TableRow
 } from '@mui/material'
-import { FC, useCallback, useMemo } from 'react'
+import { FC, useCallback, useMemo, useRef } from 'react'
+import CentralConfettiLottie from '../../resources/assets/lottie/central_confetti.json'
 import { BadgeType } from '../../types/BadgeType'
 import { Spell } from '../../types/Spell'
 import { Team } from '../../types/Team'
@@ -22,8 +26,11 @@ const DashboardTable: FC<DashboardTableProps> = ({
     'data-testid': dataTestId = 'DashboardTable',
     teams = []
 }) => {
+    const containerRef = useRef(null)
+
     const renderTableHeaders = useMemo(() => {
-        const problemHeaders = teams[0].problems.map((p) => p.name)
+        const problemHeaders: string[] = []
+        teams[0]?.problems.map((p) => problemHeaders.push(p.name))
 
         return (
             <>
@@ -42,22 +49,62 @@ const DashboardTable: FC<DashboardTableProps> = ({
         )
     }, [teams])
 
+    const getBadgeType = (spell: Spell, badgeType: BadgeType): BadgeType => {
+        if (spell.solved == null) return BadgeType.EMPTY_BADGE
+
+        return spell.solved
+            ? badgeType == BadgeType.NULL
+                ? BadgeType.SUCCESS_BADGE
+                : badgeType
+            : BadgeType.FAIL_BADGE
+    }
+
     const renderedBadges = useCallback(
         (spells: Spell[], badgeType: BadgeType) => {
-            const getBadgeType = (spell: Spell): BadgeType => {
-                if (spell.solved == null) return BadgeType.EMPTY_BADGE
+            const renderBadge = (spell: Spell, badgeType: BadgeType) => {
+                const checked = spell.solved == null
 
-                return spell.solved
-                    ? badgeType == BadgeType.NULL
-                        ? BadgeType.SUCCESS_BADGE
-                        : badgeType
-                    : BadgeType.FAIL_BADGE
+                return (
+                    <>
+                        <Grow
+                            in={checked}
+                            mountOnEnter
+                            unmountOnExit
+                            timeout={{ appear: 100, enter: 100, exit: 0 }}
+                        >
+                            <span>
+                                <DashboardBadge type={BadgeType.EMPTY_BADGE} />
+                            </span>
+                        </Grow>
+                        <Grow
+                            in={!checked}
+                            mountOnEnter
+                            unmountOnExit
+                            timeout={{ appear: 100, enter: 250, exit: 0 }}
+                        >
+                            <span>
+                                <DashboardBadge
+                                    type={getBadgeType(spell, badgeType)}
+                                />
+                            </span>
+                        </Grow>
+                        {spell.solved && (
+                            <Player
+                                src={CentralConfettiLottie}
+                                autoplay
+                                className={styles.confetti}
+                            />
+                        )}
+                    </>
+                )
             }
 
             return (
                 <div className={styles.badge_container}>
                     {spells.map((spell, i) => (
-                        <DashboardBadge key={i} type={getBadgeType(spell)} />
+                        <div key={i} className={styles.badge}>
+                            {renderBadge(spell, badgeType)}
+                        </div>
                     ))}
                 </div>
             )
@@ -65,8 +112,8 @@ const DashboardTable: FC<DashboardTableProps> = ({
         []
     )
 
-    const RenderTableRow: FC<{ index: number; team: Team }> = useCallback(
-        ({ index, team }) => {
+    const RenderTableRow = useCallback(
+        (index: number, team: Team) => {
             return (
                 <TableRow>
                     <TableCell className={styles.tableCell}>
@@ -96,16 +143,23 @@ const DashboardTable: FC<DashboardTableProps> = ({
 
     const renderTableRows = useMemo(() => {
         const filteredTeams = teams.filter((t) => t.problems.length > 0)
+
         const sortedTeams = filteredTeams.sort((a, b) => b.score - a.score)
+
         const tableRows = []
 
         for (let index = 0; index < sortedTeams.length; index++) {
             tableRows.push(
-                <RenderTableRow
-                    index={index}
-                    team={sortedTeams[index]}
+                <Slide
+                    direction="up"
+                    mountOnEnter
+                    unmountOnExit
                     key={index}
-                />
+                    in
+                    container={containerRef.current}
+                >
+                    {RenderTableRow(index, sortedTeams[index])}
+                </Slide>
             )
         }
 
@@ -128,8 +182,12 @@ const DashboardTable: FC<DashboardTableProps> = ({
     const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
 
     return (
-        <div className={styles.DashboardTable} data-testid={dataTestId}>
-            {teams.length > 0 ? renderTable : renderNoEntries()}
+        <div
+            className={styles.DashboardTable}
+            data-testid={dataTestId}
+            ref={containerRef}
+        >
+            {teams.length ? renderTable : renderNoEntries()}
         </div>
     )
 }

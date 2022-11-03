@@ -1,0 +1,5 @@
+src/resources/assets/lottie/*.json
+.lottie
+
+# Ignore generated file BriefingText.tsx
+src/components/BriefingText/BriefingText.tsx
