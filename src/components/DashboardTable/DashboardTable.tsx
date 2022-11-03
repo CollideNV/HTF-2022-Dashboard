@@ -7,7 +7,8 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow,
+    Typography
 } from '@mui/material'
 import { FC, useCallback, useMemo, useRef } from 'react'
 import CentralConfettiLottie from '../../resources/assets/lottie/central_confetti.json'
@@ -179,7 +180,13 @@ const DashboardTable: FC<DashboardTableProps> = ({
         )
     }, [renderTableHeaders, renderTableRows])
 
-    const renderNoEntries = () => <p>Team Progress will be displayed here.</p>
+    const renderNoEntries = (
+        <div className={styles.noEntries}>
+            <Typography variant="h5">
+                Team Progress will be displayed here.
+            </Typography>
+        </div>
+    )
 
     return (
         <div
