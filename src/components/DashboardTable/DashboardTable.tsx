@@ -7,11 +7,11 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow,
-    Typography
+    TableRow
 } from '@mui/material'
 import { FC, useCallback, useMemo, useRef } from 'react'
 import CentralConfettiLottie from '../../resources/assets/lottie/central_confetti.json'
+import MagicBook from '../../resources/assets/lottie/magic-book.json'
 import { BadgeType } from '../../types/BadgeType'
 import { Spell } from '../../types/Spell'
 import { Team } from '../../types/Team'
@@ -180,11 +180,15 @@ const DashboardTable: FC<DashboardTableProps> = ({
         )
     }, [renderTableHeaders, renderTableRows])
 
-    const renderNoEntries = (
+    const RenderedNoEntries = () => (
         <div className={styles.noEntries}>
-            <Typography variant="h5">
-                Team Progress will be displayed here.
-            </Typography>
+            <Player
+                src={MagicBook}
+                autoplay
+                loop
+                className={styles.MagicBookLottie}
+            />
+            <h2>Team Progress will be displayed here.</h2>
         </div>
     )
 
@@ -194,7 +198,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
             data-testid={dataTestId}
             ref={containerRef}
         >
-            {teams.length ? renderTable : renderNoEntries()}
+            {teams.length ? renderTable : <RenderedNoEntries />}
         </div>
     )
 }

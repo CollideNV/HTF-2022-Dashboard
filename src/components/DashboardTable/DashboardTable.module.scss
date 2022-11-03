@@ -8,8 +8,19 @@
 
 .noEntries {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 2rem;
+    align-items: center;
+    height: 100%;
+
+    .MagicBookLottie {
+        height: 20rem;
+    }
+
+    :nth-child(2) {
+        margin-top: -2rem;
+        color:$brown
+    }
 }
 
 .tableContainer {
