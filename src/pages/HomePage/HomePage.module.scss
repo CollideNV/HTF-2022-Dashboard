@@ -86,6 +86,19 @@
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+
+                .loadingContainer {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    align-items: center;
+                    height: 100%;
+                    > h2 {
+                        margin-top: -2rem;
+                        color: $brown;
+                    }
+                }
             }
         }
     }

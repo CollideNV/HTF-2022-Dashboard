@@ -1,12 +1,14 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styles from './HomePage.module.scss'
 
-import { Button, CircularProgress, Grow, Slide } from '@mui/material'
+import { Player } from '@lottiefiles/react-lottie-player'
+import { Button, Grow, Slide } from '@mui/material'
 import { TransitionGroup } from 'react-transition-group'
 import BriefingText from '../../components/BriefingText/BriefingText'
 import Countdown from '../../components/Countdown/Countdown'
 import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
+import MagicBook from '../../resources/assets/lottie/magic-book.json'
 import sigil_1 from '../../resources/assets/sigil_1.png'
 import { API_ROUTES } from '../../resources/constants/api-constants'
 import environment from '../../resources/constants/environment'
@@ -67,7 +69,15 @@ const HomePage: FC = () => {
                 {isBriefing ? (
                     <BriefingText />
                 ) : isLoading ? (
-                    <CircularProgress />
+                    <div className={styles.loadingContainer}>
+                        <Player
+                            autoplay
+                            loop
+                            src={MagicBook}
+                            style={{ height: 300 }}
+                        />
+                        <h2>Writing Dashboard...</h2>
+                    </div>
                 ) : (
                     <DashboardTable teams={data} />
                 )}
