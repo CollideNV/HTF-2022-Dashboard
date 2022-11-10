@@ -23,7 +23,7 @@ body: {"name": "<jouw team naam>"}
 
 > **Let op!** vergeet deze zeker niet te noteren 🪶 op een stukje perkament 📜 en deel deze met niemand 🤫.
 
-### Quest starten
+### Queeste starten
 
 Met jouw unieke nummer kan je nu jouw queste starten. Spreek onze API opnieuw aan en vraag om [een nieuwe quest te starten](https://htf.bewire.org/swagger-ui.html#/problem-controller/startQuestUsingPOST) met jouw unieke nummer.
 
