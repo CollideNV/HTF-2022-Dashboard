@@ -1,22 +1,46 @@
+@import '../../styles/_variables';
 .NotFoundPage {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: enter;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    > h1 {
-        font-size: 4em;
-    }
-
-    > span {
-        cursor: pointer;
+    > p {
+        bottom: 38vh;
+        position: absolute;
+        z-index: 2;
+        color: $light-brown;
+        font-family: 'aladin';
+        font-size: 2rem;
+        background-color: $dark-brown;
+        border-radius: 10px;
+        padding: 0 1rem;
     }
 
     .lottieContainer {
-        :first-child() {
-            height: 2rem;
+        width: 100%;
+        height: 30vw;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+        .purpleLottiePlayer,
+        .layeredLottiePlayer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 30vw;
+        }
+
+        .layeredLottiePlayer {
+            position: absolute;
+            width: 22vw;
+            z-index: 1;
         }
     }
 
