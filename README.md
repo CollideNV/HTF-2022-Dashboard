@@ -66,6 +66,13 @@ query: ?formula=<jouw oplossing>
 
 Zodra je een spreuk correct hebt afgevuurd krijg je een badge voor deze spreuk. Je kan jouw behaalde badges bekijken per wereldprobleem op [het magische dashboard](https://htf-dashboard.bewire.org/).
 
-Heb je twee spreuken van een wereld probleem correct uitgevoerd? Dan heb je deze wereldprobleem al goed verholpen en krijg je een score! Je kan ervoor kiezen om de laatste spreuk op te lossen voor een hogere score of een ander wereldprobleem op te lossen.
+Heb je twee spreuken van een wereld probleem correct uitgevoerd? Dan heb je deze wereldprobleem al goed verholpen en krijg je een score! Je kan ervoor kiezen om de laatste spreuk op te lossen voor een hogere score of een ander wereldprobleem op te lossen. De mensheid bedankt je alvast!
 
-De mensheid bedankt je alvast!
+### Queeste opgeven
+
+Mocht je problemen ondervinden met je queeste en wil je liever opnieuw beginnen. Dan kan je jouw queeste stoppen door [de bijbehoorende spreuk](https://htf.bewire.org/swagger-ui.html#/problem-controller/abandonQuestUsingPOST) op te roepen. De score van jouw successvolle wereldproblemen blijf je behouden.
+
+```
+path: /quest/{teamId}/abandon
+method: POST
+```
