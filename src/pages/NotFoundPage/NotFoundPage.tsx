@@ -10,9 +10,6 @@ import styles from './NotFoundPage.module.scss'
 const NotFoundPage: FC = () => {
     const navigate = useNavigate()
 
-    /**
-     * Call this function to redirect the user to the homepage.
-     */
     const redirectToHomePage = () => {
         navigate(ROUTES.HOMEPAGE_ROUTE)
     }
@@ -40,7 +37,11 @@ const NotFoundPage: FC = () => {
                 />
             </div>
             <p>{"We're not in Kansas anymore!"}</p>
-            <Button variant="contained" onClick={() => redirectToHomePage()} color='secondary'>
+            <Button
+                variant="contained"
+                onClick={() => redirectToHomePage()}
+                color="secondary"
+            >
                 Go Back Home
             </Button>
         </div>
