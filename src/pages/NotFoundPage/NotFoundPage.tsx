@@ -15,9 +15,11 @@ const NotFoundPage: FC = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.NotFoundPage}>
             <h1>Oops 404!</h1>
-            <span onClick={() => redirectToHomePage()}>Homepage</span>
+            <Button variant="contained" onClick={() => redirectToHomePage()}>
+                Homepage
+            </Button>
         </div>
     )
 }

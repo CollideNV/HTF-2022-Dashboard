@@ -1,10 +1,10 @@
 .NotFoundPage {
-    position: 'relative';
-    width: '100%';
-    display: 'flex';
-    justify-content: 'center';
-    align-items: 'center';
-    flex-direction: 'column';
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: enter;
+    align-items: center;
+    flex-direction: column;
 
     > h1 {
         font-size: 4em;
@@ -12,5 +12,16 @@
 
     > span {
         cursor: pointer;
+    }
+
+    .lottieContainer {
+        :first-child() {
+            height: 2rem;
+        }
+    }
+
+    .lottiePlayer {
+        height: 1rem;
+        width: 1rem;
     }
 }
