@@ -80,12 +80,25 @@
                 padding-top: 4%;
                 padding-bottom: 4%;
 
-                background-image: url(../../resources/assets/paper.png);
+                background-image: url('../../resources/assets/paper.svg#svgView(preserveAspectRatio(none))');
                 background-size: 100% 100%;
 
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+
+                .loadingContainer {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    align-items: center;
+                    height: 100%;
+                    > h2 {
+                        margin-top: -2rem;
+                        color: $brown;
+                    }
+                }
             }
         }
     }
