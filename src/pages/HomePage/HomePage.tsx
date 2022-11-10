@@ -8,7 +8,7 @@ import BriefingText from '../../components/BriefingText/BriefingText'
 import Countdown from '../../components/Countdown/Countdown'
 import DashboardTable from '../../components/DashboardTable/DashboardTable'
 import { useGetDashboardQuery } from '../../redux/services/dashboardApi'
-import MagicBook from '../../resources/assets/lottie/magic-book.json'
+import lottie from '../../resources/assets/lottie'
 import sigil_1 from '../../resources/assets/sigil_1.png'
 import { API_ROUTES } from '../../resources/constants/api-constants'
 import environment from '../../resources/constants/environment'
@@ -63,8 +63,8 @@ const HomePage: FC = () => {
         }
     }, [refetch])
 
-    const renderedBody = useMemo(() => {
-        return (
+    const renderedBody = useMemo(
+        () => (
             <div className={styles.body}>
                 {isBriefing ? (
                     <BriefingText />
@@ -73,7 +73,7 @@ const HomePage: FC = () => {
                         <Player
                             autoplay
                             loop
-                            src={MagicBook}
+                            src={lottie.MagicBook}
                             style={{ height: 300 }}
                         />
                         <h2>Writing Dashboard...</h2>
@@ -82,8 +82,9 @@ const HomePage: FC = () => {
                     <DashboardTable teams={data} />
                 )}
             </div>
-        )
-    }, [data, isLoading, isBriefing])
+        ),
+        [data, isLoading, isBriefing]
+    )
 
     return (
         <div className={styles.HomePage}>

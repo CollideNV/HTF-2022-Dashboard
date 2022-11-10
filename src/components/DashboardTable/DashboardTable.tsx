@@ -10,8 +10,7 @@ import {
     TableRow
 } from '@mui/material'
 import { FC, useCallback, useMemo, useRef } from 'react'
-import CentralConfettiLottie from '../../resources/assets/lottie/central_confetti.json'
-import MagicBook from '../../resources/assets/lottie/magic-book.json'
+import lottie from '../../resources/assets/lottie'
 import { BadgeType } from '../../types/BadgeType'
 import { Spell } from '../../types/Spell'
 import { Team } from '../../types/Team'
@@ -91,7 +90,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
                         </Grow>
                         {spell.solved && (
                             <Player
-                                src={CentralConfettiLottie}
+                                src={lottie.CentralConfetti}
                                 autoplay
                                 className={styles.confetti}
                             />
@@ -183,7 +182,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
     const RenderedNoEntries = () => (
         <div className={styles.noEntries}>
             <Player
-                src={MagicBook}
+                src={lottie.MagicBook}
                 autoplay
                 loop
                 className={styles.MagicBookLottie}
