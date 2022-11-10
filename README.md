@@ -55,7 +55,7 @@ Om [een spreuk af te vuren](https://htf.bewire.org/swagger-ui.html#/problem-cont
 ```
 path: /cast/{spellId}
 method: POST
-query: formula
+query: ?formula=<jouw oplossing>
 ```
 
 > **Let op!** Voor sommige spreuken kan je maar een aantal keer de formule van doorgeven voordat dit brouwsel 🧪 ontploft 💥. Je kan deze spreuk dan helaas **niet meer oplossen**.
