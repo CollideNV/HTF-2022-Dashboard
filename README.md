@@ -67,7 +67,7 @@ git clone https://github.com/CollideNV/htf-2022-react.git
 
 De nodige setup en installatie van de web component is voorzien in de startup projecten.
 
-De component heeft de HTML tag "htf-2022" en accepteert 2 attributen, quest en url.
+De component heeft de HTML tag "htf-2022" en accepteert 2 attributen, `quest` en `url`.
 
 #### Attribuut quest
 
