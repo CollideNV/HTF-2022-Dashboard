@@ -25,9 +25,9 @@ body: {"name": "<jouw team naam>"}
 
 ### Queeste starten
 
-Met jouw unieke nummer kan je nu jouw queste starten. Spreek onze API opnieuw aan en vraag om [een nieuwe quest te starten](https://htf.bewire.org/swagger-ui.html#/problem-controller/startQuestUsingPOST) met jouw unieke nummer.
+Met jouw unieke nummer kan je nu jouw queeste starten. Spreek onze API opnieuw aan en vraag om [een nieuwe queeste te starten](https://htf.bewire.org/swagger-ui.html#/problem-controller/startQuestUsingPOST) met jouw unieke nummer.
 
-Zodra je een quest hebt gestart komt jouw team tevoorschijn in [het magische dashboard](https://htf-dashboard.bewire.org/).
+Zodra je een queeste hebt gestart komt jouw team tevoorschijn in [het magische dashboard](https://htf-dashboard.bewire.org/).
 
 ```
 path: /quest
@@ -35,14 +35,102 @@ method: POST
 query: teamId
 ```
 
-### Wereldproblemen
-
-Met het starten van je queeste is er een hele set aan wereldproblemen op je afgevuurd. Je kan altijd je [quest opnieuw opvragen](https://htf.bewire.org/swagger-ui.html#/problem-controller/getQuestUsingGET) met alle wereldproblemen, mogelijke spreuken en bijbehorende hints, door de volgende endpoint op te roepen:
+Je kan altijd je [queeste opnieuw opvragen](https://htf.bewire.org/swagger-ui.html#/problem-controller/getQuestUsingGET) met alle wereldproblemen, mogelijke spreuken en bijbehorende hints, door de volgende endpoint op te roepen:
 
 ```
 path: /problems/{teamId}
 method: GET
 ```
+
+### Front-end taak
+
+Jouw front-end taak is het ophalen van je queeste, deze stylen, en tonen in een pagina.
+
+Van ons krijg je alvast een web component met een HTML template en de functionaliteit om je antwoord te sturen naar onze API.
+
+Je bent vrij in je keuze van front-end frameworks. Wij hebben een startup project voorzien voor de 3 meest populaire frameworks.
+
+Clone één van de volgende repositories.
+
+
+```
+git clone https://github.com/CollideNV/htf-2022-angular.git
+```
+```
+git clone https://github.com/CollideNV/htf-2022-vue.git
+```
+```
+git clone https://github.com/CollideNV/htf-2022-react.git
+```
+
+### Gebruik web component
+
+De nodige setup en installatie van de web component is voorzien in de startup projecten.
+
+De component heeft de HTML tag "htf-2022" en accepteert 2 attributen, quest en url.
+
+#### Attribuut quest
+
+Je kan je queeste als object of als JSON string meegeven.
+
+Voorbeeld angular:
+```
+<htf-2022 [quest]="quest"></htf-2022>
+```
+Voorbeeld vue:
+```
+<htf-2022 .quest="quest"></htf-2022>
+```
+Voorbeeld react:
+```
+<htf-2022 quest={JSON.stringify(quest)}></htf-2022>
+```
+
+#### Attribuut url
+
+Bij selectie van een spreuk krijg je een button "cast spell" te zien. Als default heb je hiernaast ook een input veld om je antwoord mee te geven.
+
+Je kan optioneel ook uw back-end url meegeven. Dan krijg je geen input veld meer maar haalt de component je antwoord op bij uw back-end.
+
+De component maakt een call naar:
+
+```
+url: http://{url}/{spellId}
+method: POST
+body: ingredients
+```
+
+#### Classen
+
+Je kan gebruik maken van de volgende classen om je queeste te stylen:
+
+```
+problem
+problem-name
+description
+spell
+spell-name
+effect
+challenge
+recipe
+ingredients
+remainingAttempts
+difficulty
+```
+
+Optionele classen:
+
+```
+solved (van toepassing bij problem en spell)
+active (geselcteerde spell)
+
+```
+
+### Wereldproblemen
+
+Met het starten van je queeste worden 3 wereldproblemen op je afgevuurd.
+
+Elk wereldprobleem heeft 3 effectieve spreuken waarvan je minstens 2 correct moet uispreken om een wereldprobleem op te lossen.
 
 ### Spreuken vinden
 
