@@ -142,13 +142,9 @@ const DashboardTable: FC<DashboardTableProps> = ({
     )
 
     const renderTableRows = useMemo(() => {
-        const filteredTeams = teams.filter((t) => t.problems.length > 0)
-
-        const sortedTeams = filteredTeams.sort((a, b) => b.score - a.score)
-
         const tableRows = []
 
-        for (let index = 0; index < sortedTeams.length; index++) {
+        for (let index = 0; index < teams.length; index++) {
             tableRows.push(
                 <Slide
                     direction="up"
@@ -158,7 +154,7 @@ const DashboardTable: FC<DashboardTableProps> = ({
                     in
                     container={containerRef.current}
                 >
-                    {RenderTableRow(index, sortedTeams[index])}
+                    {RenderTableRow(index, teams[index])}
                 </Slide>
             )
         }
