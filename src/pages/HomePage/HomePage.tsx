@@ -16,11 +16,15 @@ import environment from '../../resources/constants/environment'
 const deadline = environment.deadline
 
 const HomePage: FC = () => {
-    const { data, isLoading, refetch } = useGetDashboardQuery(undefined, {
-        refetchOnMountOrArgChange: true,
-        refetchOnReconnect: true,
-        pollingInterval: 30000
-    })
+    const { data, isLoading, refetch, isSuccess } = useGetDashboardQuery(
+        undefined,
+        {
+            refetchOnMountOrArgChange: true,
+            refetchOnReconnect: true,
+            pollingInterval: 30000
+        }
+    )
+
     const [isBriefing, setBriefing] = useState<boolean>(
         window.location.href.endsWith('#briefing')
     )
@@ -52,7 +56,6 @@ const HomePage: FC = () => {
 
         const listener = () => {
             console.log(`UPDATE RECIEVED: ${new Date()}`)
-
             refetch()
         }
 
@@ -62,6 +65,14 @@ const HomePage: FC = () => {
             clearInterval(interval)
         }
     }, [refetch])
+
+    const getFilteredTeams = useMemo(() => {
+        if (!isSuccess || !data) return []
+
+        return data
+            .filter((team) => team.problems.length > 0)
+            .sort((a, b) => b.score - a.score)
+    }, [data, isSuccess])
 
     const renderedBody = useMemo(
         () => (
@@ -79,11 +90,11 @@ const HomePage: FC = () => {
                         <h2>Writing Dashboard...</h2>
                     </div>
                 ) : (
-                    <DashboardTable teams={data} />
+                    <DashboardTable teams={getFilteredTeams} />
                 )}
             </div>
         ),
-        [data, isLoading, isBriefing]
+        [isBriefing, isLoading, getFilteredTeams]
     )
 
     return (
